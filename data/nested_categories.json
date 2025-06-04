@@ -1,0 +1,62 @@
+{
+  "nested_categories": [
+    {
+      "name": "Health & Beauty",
+      "children": [
+        {
+          "name": "Skin Care",
+          "children": [
+            { "name": "Dermacare" },
+            { "name": "Moisturizers" },
+            { "name": "Sun Protection" }
+          ]
+        },
+        {
+          "name": "Hair Care",
+          "children": [
+            { "name": "Shampoo" },
+            { "name": "Conditioner" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Electronics",
+      "children": [
+        {
+          "name": "Computers",
+          "children": [
+            { "name": "Laptops" },
+            { "name": "Desktops" }
+          ]
+        },
+        {
+          "name": "Phones",
+          "children": [
+            { "name": "Smartphones" },
+            { "name": "Accessories" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fashion",
+      "children": [
+        {
+          "name": "Men",
+          "children": [
+            { "name": "Shirts" },
+            { "name": "Shoes" }
+          ]
+        },
+        {
+          "name": "Women",
+          "children": [
+            { "name": "Dresses" },
+            { "name": "Handbags" }
+          ]
+        }
+      ]
+    }
+  ]
+}

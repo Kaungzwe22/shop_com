@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --main_theme: #ff6200;
+  --btn_search: rgb(255, 210, 246);
+}
+
+.main_bg {
+  background-color: var(--main_theme);
+}
+
+.btn_search {
+  background-color: var(--btn_search);
+  color: rgba(164, 1, 77, 0.425);
+}
+.bg_gradient{
+  background: #8A2387;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
