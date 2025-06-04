@@ -9,14 +9,13 @@ const ProductMain = () => {
     <div>
       <CatMenu />
       <Path />
-      <main className="shadow-md flex items-top py-5">
+      <main className="shadow-md flex items-top ">
         <div className="w-[75%] flex items-top">
           <div className="me-5 p-1">
-
             <ProImgZoom/>
           </div>
         </div>
-        <div className="w-[20%]">right</div>
+        <div className="w-[20%] z-9">right</div>
       </main>
     </div>
   );

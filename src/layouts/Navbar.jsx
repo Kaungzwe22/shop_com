@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = () => { 
     const [isopen, setIsopen] = useState(false)
 
     return (
@@ -38,7 +38,7 @@ const Navbar = () => {
             </header>
 
             <div className="flex justify-between items-center mt-3">
-                <NavLink to={'/'}><img src="./logo.png" className='max-w-30' alt="" /></NavLink>
+                <NavLink to={'/'}><img src="../imgs/logo.png" className='max-w-30' alt="" /></NavLink>
                  
                 <div className="flex items-center">
                     <form action="" className='flex items-center'>
@@ -50,7 +50,7 @@ const Navbar = () => {
                     
                 </div>
 
-                <img src="./download_app.png" className='max-w-50' alt="" />
+                <img src="../imgs/download_app.png" className='max-w-50' alt="" />
             </div>
         </nav>
     )

@@ -1,120 +1,98 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const ProImgZoom = () => {
     const [mainImageSrc, setMainImageSrc] = useState('../imgs/cat01.png');
-    const [zoomVisible, setZoomVisible] = useState(false);
-
-    const lensRef = useRef(null);
-    const zoomResultRef = useRef(null);
-    const mainContainerRef = useRef(null);
-
-    const zoomLevel = 2;
-
-    const moveLens = (e) => {
-        const { left, top, width, height } = mainContainerRef.current.getBoundingClientRect();
-        let x = e.pageX - left - window.pageXOffset;
-        let y = e.pageY - top - window.pageYOffset;
-
-        const lensWidth = lensRef.current.offsetWidth / 5;
-        const lensHeight = lensRef.current.offsetHeight / 5;
-
-        x = x - lensWidth;
-        y = y - lensHeight;
-
-        if (x < 0) x = 0;
-        if (y < 0) y = 0;
-        if (x > width - lensRef.current.offsetWidth) x = width - lensRef.current.offsetWidth;
-        if (y > height - lensRef.current.offsetHeight) y = height - lensRef.current.offsetHeight;
-
-        lensRef.current.style.left = x + 'px';
-        lensRef.current.style.top = y + 'px';
-
-        const xPercent = (x + lensWidth) / width * 100;
-        const yPercent = (y + lensHeight) / height * 100;
-
-        zoomResultRef.current.style.backgroundImage = `url(${mainImageSrc})`;
-        zoomResultRef.current.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-    };
+    const [heart, setHeart] = useState(false)
+    const [share, setShare] = useState(false)
 
     const changeImage = (src) => {
         setMainImageSrc(src);
     };
 
-    useEffect(() => {
-        const mainContainer = mainContainerRef.current;
-        const lens = lensRef.current;
-        const zoomResult = zoomResultRef.current;
-
-        const handleMouseEnter = () => setZoomVisible(true);
-        const handleMouseLeave = () => {
-            setZoomVisible(false);
-            zoomResult.style.backgroundImage = 'none';
-        };
-
-        mainContainer.addEventListener('mousemove', moveLens);
-        mainContainer.addEventListener('mouseenter', handleMouseEnter);
-        mainContainer.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            mainContainer.removeEventListener('mousemove', moveLens);
-            mainContainer.removeEventListener('mouseenter', handleMouseEnter);
-            mainContainer.removeEventListener('mouseleave', handleMouseLeave);
-        };
-    }, [mainImageSrc]);
-
     return (
-        <div>
-            <div className="container">
-                <div className="main-image-container" ref={mainContainerRef}>
-                    <img
-                        id="mainImage"
-                        src={mainImageSrc}
-                        alt="Main Image"
-                        onMouseEnter={() => setZoomVisible(true)}
-                        onMouseLeave={() => setZoomVisible(false)}
-                    />
-                    <div
-                        className="lens"
-                        ref={lensRef}
-                        style={{ display: zoomVisible ? 'block' : 'none' }}
-                    ></div>
+        <div className='flex'>
+            <div>
+                <div className="flex gap-5">
+                    <div className="relative w-[300px] h-[300px] overflow-hidden border border-gray-300">
+                        <img
+                            id="mainImage"
+                            src={mainImageSrc}
+                            alt="Main Image"
+                            className="w-full h-full block"
+                        />
+                    </div>
                 </div>
-                <div
-                    className="zoom-result"
-                    ref={zoomResultRef}
-                    style={{ display: zoomVisible ? 'block' : 'none' }}
-                ></div>
+
+                <div className="mt-2.5 w-[300px] overflow-hidden whitespace-nowrap border border-gray-300">
+                    <img
+                        src="../imgs/cat01.png"
+                        alt="Red"
+                        onClick={() => changeImage('../imgs/cat01.png')}
+                        className="w-[60px] h-[60px] m-[5px] inline-block cursor-pointer"
+                    />
+                    <img
+                        src="../imgs/cat02.png"
+                        alt="Green"
+                        onClick={() => changeImage('../imgs/cat02.png')}
+                        className="w-[60px] h-[60px] m-[5px] inline-block cursor-pointer"
+                    />
+                    <img
+                        src="../imgs/cat03.png"
+                        alt="Blue"
+                        onClick={() => changeImage('../imgs/cat03.png')}
+                        className="w-[60px] h-[60px] m-[5px] inline-block cursor-pointer"
+                    />
+                    <img
+                        src="../imgs/cat04.png"
+                        alt="Yellow"
+                        onClick={() => changeImage('../imgs/cat04.png')}
+                        className="w-[60px] h-[60px] m-[5px] inline-block cursor-pointer"
+                    />
+                    <img
+                        src="../imgs/cat05.png"
+                        alt="Magenta"
+                        onClick={() => changeImage('../imgs/cat05.png')}
+                        className="w-[60px] h-[60px] m-[5px] inline-block cursor-pointer"
+                    />
+                </div>
             </div>
 
-            <div className="carousel" id="carousel">
-                <img
-                    src="../imgs/cat01.png"
-                    alt="Red"
-                    onClick={() => changeImage('../imgs/cat01.png')}
-                />
-                <img
-                    src="../imgs/cat02.png"
-                    alt="Green"
-                    onClick={() => changeImage('../imgs/cat02.png')}
-                />
-                <img
-                    src="../imgs/cat03.png"
-                    alt="Blue"
-                    onClick={() => changeImage('../imgs/cat03.png')}
-                />
-                <img
-                    src="../imgs/cat04.png"
-                    alt="Yellow"
-                    onClick={() => changeImage('../imgs/cat04.png')}
-                />
-                <img
-                    src="../imgs/cat05.png"
-                    alt="Magenta"
-                    onClick={() => changeImage('../imgs/cat05.png')}
-                />
+            <div className="ml-6">
+                <h1 className='text-xl'>Yves Rocher (France) BHC Anti Hair Loss Shampoo 300ml *Directly from Thailand Official Store *Expired Date 2023</h1>
+                <div className="flex justify-end items-center my-1">
+
+
+                    <div className="relative inline-block text-left">
+                        <button onClick={() => setShare(!share)} type="button" className="cursor-pointer" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <i className="fa-solid text-gray-500 mx-1 text-2xl fa-share-nodes"></i>
+                        </button>
+                        {
+                            share && (
+                                <div onMouseLeave={() => setShare(!share)} className="absolute p-5 right-0 z-10 mt-2 w-50 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <h3>Share via:</h3>
+                                    <div className="py-1 flex items-center justify-between" role="none">
+                                        <a href="" className="text-sm text-gray-700 mx-1" role="menuitem" tabindex="-1" id="menu-item-0">
+                                            <img src="../imgs/facebook_logo.png" className='w-7' alt="" />
+                                        </a>
+                                        <a href="" className="text-sm text-gray-700 mx-1" role="menuitem" tabindex="-1" id="menu-item-0">
+                                            <img src="../imgs/pinterest_logo.png" className='w-10' alt="" />
+                                        </a>
+                                        <a href="" className="text-sm text-gray-700 mx-1" role="menuitem" tabindex="-1" id="menu-item-0">
+                                            <img src="../imgs/twitter_logo.png" className='w-7 rounded-full' alt="" />
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            )
+                        }
+
+                    </div>
+
+                    <i onClick={() => setHeart(!heart)} className={heart ? "fa-solid text-gray-500 mx-1 text-2xl fa-heart cursor-pointer" : "fa-regular text-gray-500 mx-1 text-2xl fa-heart cursor-pointer"}></i>
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProImgZoom
+export default ProImgZoom;
